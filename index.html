@@ -1,0 +1,886 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rhema Revival Church</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        heading: ['Playfair Display', 'serif'],
+                        body: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: {
+                            light: '#3A5A40',
+                            dark: '#344E41',
+                        },
+                        secondary: {
+                            light: '#DAD7CD',
+                            dark: '#A3B18A',
+                        },
+                        accent: {
+                            light: '#588157',
+                            dark: '#84A98C',
+                        }
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'float': 'float 6s ease-in-out infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/css">
+        .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+        
+        .dark .hero-bg {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.60), rgba(0, 0, 0, 0.60)), url('background.jpg');
+        }
+        
+        .nav-link {
+            position: relative;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: currentColor;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        .poster-card {
+            transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        
+        .poster-card:hover {
+            transform: scale(1.03);
+        }
+        
+        .form-input {
+            transition: all 0.3s ease;
+        }
+        
+        .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(58, 90, 64, 0.3);
+        }
+        
+        .dark .form-input:focus {
+            box-shadow: 0 0 0 3px rgba(132, 169, 140, 0.3);
+        }
+        
+        .toggle-checkbox:checked {
+            right: 0;
+            border-color: #3A5A40;
+        }
+        
+        .dark .toggle-checkbox:checked {
+            border-color: #84A98C;
+        }
+        
+        .toggle-checkbox:checked + .toggle-label {
+            background-color: #3A5A40;
+        }
+        
+        .dark .toggle-checkbox:checked + .toggle-label {
+            background-color: #84A98C;
+        }
+        
+        .scroll-down {
+            animation: float 2s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="font-body bg-secondary-light text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors duration-500">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <a href="#" class="flex items-center space-x-3">
+                <div class="w-10 h-10 rounded-full bg-primary-light dark:bg-accent-dark flex items-center justify-center">
+                    <i class="fas fa-cross text-white text-xl"></i>
+                </div>
+                <span class="font-heading text-2xl font-bold text-primary-light dark:text-accent-dark">Rhema Revival</span>
+            </a>
+            
+            <nav class="hidden lg:flex space-x-8">
+                <a href="#home" class="nav-link font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark">Home</a>
+                <a href="#pastor" class="nav-link font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark">Our Pastor</a>
+                <a href="#services" class="nav-link font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark">Services</a>
+                <a href="#events" class="nav-link font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark">Events</a>
+                <a href="#media" class="nav-link font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark">Media</a>
+                <a href="#contact" class="nav-link font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark">Contact</a>
+            </nav>
+            
+            <div class="flex items-center space-x-6">
+                <a href="https://bible.usccb.org/bible" target="_blank" class="hidden md:flex items-center space-x-2 px-5 py-2 bg-primary-light hover:bg-primary-dark text-white rounded-full font-medium transition-all duration-300 dark:bg-accent-dark dark:hover:bg-accent-light shadow-md">
+                    <i class="fas fa-bible"></i>
+                    <span>Access Bible</span>
+                </a>
+                
+                <div class="flex items-center space-x-2">
+                    <i class="fas fa-sun text-gray-500 dark:text-yellow-300"></i>
+                    <div class="relative inline-block w-12 align-middle select-none">
+                        <input type="checkbox" id="toggle" class="toggle-checkbox absolute block w-6 h-6 rounded-full bg-white border-4 appearance-none cursor-pointer"/>
+                        <label for="toggle" class="toggle-label block overflow-hidden h-6 rounded-full bg-gray-300 cursor-pointer"></label>
+                    </div>
+                    <i class="fas fa-moon text-gray-400 dark:text-white"></i>
+                </div>
+                
+                <button id="mobile-menu-button" class="lg:hidden text-gray-700 dark:text-gray-300">
+                    <i class="fas fa-bars text-2xl"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden lg:hidden bg-white dark:bg-gray-800 shadow-xl">
+            <div class="container mx-auto px-6 py-4 flex flex-col space-y-4">
+                <a href="#home" class="block py-3 font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark border-b border-gray-100 dark:border-gray-700">Home</a>
+                <a href="#pastor" class="block py-3 font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark border-b border-gray-100 dark:border-gray-700">Our Pastor</a>
+                <a href="#services" class="block py-3 font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark border-b border-gray-100 dark:border-gray-700">Services</a>
+                <a href="#events" class="block py-3 font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark border-b border-gray-100 dark:border-gray-700">Events</a>
+                <a href="#media" class="block py-3 font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark border-b border-gray-100 dark:border-gray-700">Media</a>
+                <a href="#contact" class="block py-3 font-medium text-gray-700 hover:text-primary-light dark:text-gray-300 dark:hover:text-accent-dark">Contact</a>
+                <a href="https://www.bible.com/" target="_blank" class="block px-5 py-3 bg-primary-light hover:bg-primary-dark text-white rounded-lg font-medium transition-colors duration-300 text-center dark:bg-accent-dark dark:hover:bg-accent-light mt-4">
+                    <i class="fas fa-bible mr-2"></i> Access Bible
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-bg min-h-screen flex items-center justify-center text-center text-white pt-24 pb-16 px-6">
+        <div class="max-w-5xl mx-auto animate-fade-in">
+            <h1 class="font-heading text-5xl md:text-7xl font-bold mb-6 animate-slide-up leading-tight">Experience God's Love at Rhema Revival</h1>
+            <p class="text-xl md:text-2xl mb-10 animate-slide-up" style="animation-delay: 0.2s;">A welcoming community where faith comes alive through worship, fellowship, and service</p>
+            <div class="flex flex-col sm:flex-row justify-center gap-6 animate-slide-up" style="animation-delay: 0.4s;">
+                <a href="#services" class="px-8 py-4 bg-primary-light hover:bg-primary-dark rounded-full font-medium text-lg transition-all duration-300 transform hover:scale-105 shadow-lg dark:bg-accent-dark dark:hover:bg-accent-light">
+                    Join Our Services
+                </a>
+                <a href="#contact" class="px-8 py-4 bg-transparent border-2 border-white hover:bg-white hover:text-gray-900 rounded-full font-medium text-lg transition-all duration-300 transform hover:scale-105">
+                    Plan Your Visit
+                </a>
+            </div>
+            
+            <div class="mt-20 scroll-down">
+                <a href="#pastor" class="inline-block animate-bounce">
+                    <i class="fas fa-chevron-down text-2xl text-white opacity-70 hover:opacity-100"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pastor Section -->
+    <section id="pastor" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary-light dark:text-accent-dark font-medium uppercase tracking-widest">Spiritual Leadership</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mt-4 text-gray-800 dark:text-white">Meet Apostle David Eagle Davids</h2>
+                <div class="w-24 h-1 bg-primary-light dark:bg-accent-dark mx-auto mt-6"></div>
+            </div>
+            
+            <div class="flex flex-col lg:flex-row items-center gap-12 max-w-6xl mx-auto">
+                <div class="lg:w-2/5 relative">
+                    <div class="rounded-2xl overflow-hidden shadow-2xl">
+                        <img src="pastor.jpg"
+                             alt="Apostle David Eagle Davids" 
+                             class="w-full h-auto object-cover">
+                    </div>
+                    <div class="absolute -bottom-6 -right-6 bg-primary-light dark:bg-accent-dark text-white p-6 rounded-xl shadow-xl">
+                        <p class="font-bold text-xl">15+</p>
+                        <p class="text-sm">Years Serving</p>
+                    </div>
+                </div>
+                
+                <div class="lg:w-3/5">
+                    <h3 class="font-heading text-3xl font-bold mb-6 text-primary-light dark:text-accent-dark">Leading With Faith and Vision</h3>
+                    <div class="space-y-6">
+                        <p class="text-lg">
+                            Apostle David Eangle Davids has been the spiritual shepherd of Rhema Revival Church since 2025. His dynamic preaching style combines deep biblical insight with practical life application, making complex theological concepts accessible to all.
+                        </p>
+                        <p class="text-lg">
+                            Apostle David Eagle Davids served in various ministry roles before answering God's call to lead this congregation. He is passionate about discipleship, community transformation, and equipping believers for ministry.
+                        </p>
+                        <p class="text-lg italic border-l-4 border-primary-light dark:border-accent-dark pl-4 py-2 text-gray-700 dark:text-gray-300">
+                            "My greatest joy is seeing people discover their God-given purpose and walk in the fullness of Christ."
+                        </p>
+                    </div>
+                    
+                    <div class="mt-8 flex flex-wrap gap-4">
+                        <div class="flex items-center bg-secondary-light dark:bg-gray-700 px-4 py-3 rounded-lg">
+                            <i class="fas fa-book-bible text-primary-light dark:text-accent-dark mr-2"></i>
+                            <span>Biblical Teaching</span>
+                        </div>
+                        <div class="flex items-center bg-secondary-light dark:bg-gray-700 px-4 py-3 rounded-lg">
+                            <i class="fas fa-hands-praying text-primary-light dark:text-accent-dark mr-2"></i>
+                            <span>Prayer Ministry</span>
+                        </div>
+                        <div class="flex items-center bg-secondary-light dark:bg-gray-700 px-4 py-3 rounded-lg">
+                            <i class="fas fa-people-group text-primary-light dark:text-accent-dark mr-2"></i>
+                            <span>Community Focus</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Service Times Section -->
+    <section id="services" class="py-20 bg-gray-50 dark:bg-gray-900">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary-light dark:text-accent-dark font-medium uppercase tracking-widest">Join Us</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mt-4 text-gray-800 dark:text-white">Service Times</h2>
+                <div class="w-24 h-1 bg-primary-light dark:bg-accent-dark mx-auto mt-6"></div>
+            </div>
+            
+            <div class="max-w-5xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-primary-light dark:bg-accent-dark text-white p-4 rounded-xl mr-4">
+                            <i class="fas fa-sun text-2xl"></i>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-primary-light dark:text-accent-dark">Sunday Worship</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-3 text-primary-light dark:text-accent-dark"></i>
+                            <div>
+                                <p class="font-medium">Morning Service</p>
+                                <p class="text-gray-600 dark:text-gray-400">8 AM - 12:00 PM</p>
+                            </div>
+                        </li>
+                       
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-3 text-primary-light dark:text-accent-dark"></i>
+                            <div>
+                                <p class="font-medium">Evening Service</p>
+                                <p class="text-gray-600 dark:text-gray-400">5:00 PM - 7:00 PM</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-primary-light dark:bg-accent-dark text-white p-4 rounded-xl mr-4">
+                            <i class="fas fa-book-bible text-2xl"></i>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-primary-light dark:text-accent-dark">Bible Study</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-3 text-primary-light dark:text-accent-dark"></i>
+                            <div>
+                                <p class="font-medium">Tuesday Bible Study</p>
+                                <p class="text-gray-600 dark:text-gray-400">6:00 PM - 7:30 PM</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-3 text-primary-light dark:text-accent-dark"></i>
+                            <div>
+                                <p class="font-medium">Men's Bible Study</p>
+                                <p class="text-gray-600 dark:text-gray-400">1st Saturday Monthly</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-3 text-primary-light dark:text-accent-dark"></i>
+                            <div>
+                                <p class="font-medium">Women's Bible Study</p>
+                                <p class="text-gray-600 dark:text-gray-400">2nd Saturday Monthly</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div class="service-card bg-white dark:bg-gray-800 p-8 rounded-2xl shadow-lg transition-all duration-300">
+                    <div class="flex items-center mb-6">
+                        <div class="bg-primary-light dark:bg-accent-dark text-white p-4 rounded-xl mr-4">
+                            <i class="fas fa-praying-hands text-2xl"></i>
+                        </div>
+                        <h3 class="font-heading text-2xl font-bold text-primary-light dark:text-accent-dark">Prayer & Fellowship</h3>
+                    </div>
+                    <ul class="space-y-4">
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-3 text-primary-light dark:text-accent-dark"></i>
+                            <div>
+                                <p class="font-medium">Thursday Prayer</p>
+                                <p class="text-gray-600 dark:text-gray-400">6:00 PM - 7:30 PM</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-3 text-primary-light dark:text-accent-dark"></i>
+                            <div>
+                                <p class="font-medium">Youth Fellowship</p>
+                                <p class="text-gray-600 dark:text-gray-400">Friday 6:00 PM - 8:00 PM</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-circle text-xs mt-2 mr-3 text-primary-light dark:text-accent-dark"></i>
+                            <div>
+                                <p class="font-medium">Senior Saints</p>
+                                <p class="text-gray-600 dark:text-gray-400">Wednesday 10:00 AM</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#contact" class="inline-flex items-center px-8 py-4 bg-primary-light hover:bg-primary-dark text-white rounded-full font-medium text-lg transition-all duration-300 transform hover:scale-105 shadow-lg dark:bg-accent-dark dark:hover:bg-accent-light">
+                    <i class="fas fa-location-dot mr-2"></i> Get Directions
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary-light dark:text-accent-dark font-medium uppercase tracking-widest">What's Happening</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mt-4 text-gray-800 dark:text-white">Upcoming Events</h2>
+                <div class="w-24 h-1 bg-primary-light dark:bg-accent-dark mx-auto mt-6"></div>
+            </div>
+            
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-secondary-light dark:bg-gray-700 p-6 rounded-2xl shadow-lg border-t-4 border-primary-light dark:border-accent-dark">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-primary-light dark:bg-accent-dark text-white px-5 py-3 rounded-xl mr-4 text-center min-w-[70px]">
+                            <p class="text-xl font-bold">15</p>
+                            <p class="text-sm uppercase">Jun</p>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-xl font-bold mb-1">Annual Conference</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">9:00 AM - 4:00 PM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Three days of powerful worship, teaching, and fellowship with guest speakers from around the world.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm px-3 py-1 bg-primary-light/10 dark:bg-accent-dark/10 text-primary-light dark:text-accent-dark rounded-full">Conference</span>
+                        <a href="#" class="text-primary-light dark:text-accent-dark font-medium text-sm hover:underline">Learn More →</a>
+                    </div>
+                </div>
+                
+                <div class="bg-secondary-light dark:bg-gray-700 p-6 rounded-2xl shadow-lg border-t-4 border-primary-light dark:border-accent-dark">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-primary-light dark:bg-accent-dark text-white px-5 py-3 rounded-xl mr-4 text-center min-w-[70px]">
+                            <p class="text-xl font-bold">22</p>
+                            <p class="text-sm uppercase">Jun</p>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-xl font-bold mb-1">Community Outreach</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">10:00 AM - 2:00 PM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Join us as we serve our local community with food, clothing, and the love of Christ.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm px-3 py-1 bg-primary-light/10 dark:bg-accent-dark/10 text-primary-light dark:text-accent-dark rounded-full">Mission</span>
+                        <a href="#" class="text-primary-light dark:text-accent-dark font-medium text-sm hover:underline">Volunteer →</a>
+                    </div>
+                </div>
+                
+                <div class="bg-secondary-light dark:bg-gray-700 p-6 rounded-2xl shadow-lg border-t-4 border-primary-light dark:border-accent-dark">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-primary-light dark:bg-accent-dark text-white px-5 py-3 rounded-xl mr-4 text-center min-w-[70px]">
+                            <p class="text-xl font-bold">30</p>
+                            <p class="text-sm uppercase">Jun</p>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-xl font-bold mb-1">Baptism Service</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">2:00 PM - 4:00 PM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Celebrate new life in Christ as we baptize new believers in our outdoor baptismal.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm px-3 py-1 bg-primary-light/10 dark:bg-accent-dark/10 text-primary-light dark:text-accent-dark rounded-full">Sacrament</span>
+                        <a href="#" class="text-primary-light dark:text-accent-dark font-medium text-sm hover:underline">Sign Up →</a>
+                    </div>
+                </div>
+                
+                <div class="bg-secondary-light dark:bg-gray-700 p-6 rounded-2xl shadow-lg border-t-4 border-primary-light dark:border-accent-dark">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-primary-light dark:bg-accent-dark text-white px-5 py-3 rounded-xl mr-4 text-center min-w-[70px]">
+                            <p class="text-xl font-bold">05</p>
+                            <p class="text-sm uppercase">Jul</p>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-xl font-bold mb-1">Women's Retreat</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">All Day</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">A day of spiritual refreshment, prayer, and fellowship for women of all ages.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm px-3 py-1 bg-primary-light/10 dark:bg-accent-dark/10 text-primary-light dark:text-accent-dark rounded-full">Fellowship</span>
+                        <a href="#" class="text-primary-light dark:text-accent-dark font-medium text-sm hover:underline">Register →</a>
+                    </div>
+                </div>
+                
+                <div class="bg-secondary-light dark:bg-gray-700 p-6 rounded-2xl shadow-lg border-t-4 border-primary-light dark:border-accent-dark">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-primary-light dark:bg-accent-dark text-white px-5 py-3 rounded-xl mr-4 text-center min-w-[70px]">
+                            <p class="text-xl font-bold">12</p>
+                            <p class="text-sm uppercase">Jul</p>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-xl font-bold mb-1">Youth Camp</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">Friday - Sunday</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Annual summer camp for youth ages 13-18 with worship, games, and spiritual growth.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm px-3 py-1 bg-primary-light/10 dark:bg-accent-dark/10 text-primary-light dark:text-accent-dark rounded-full">Youth</span>
+                        <a href="#" class="text-primary-light dark:text-accent-dark font-medium text-sm hover:underline">Details →</a>
+                    </div>
+                </div>
+                
+                <div class="bg-secondary-light dark:bg-gray-700 p-6 rounded-2xl shadow-lg border-t-4 border-primary-light dark:border-accent-dark">
+                    <div class="flex items-start mb-4">
+                        <div class="bg-primary-light dark:bg-accent-dark text-white px-5 py-3 rounded-xl mr-4 text-center min-w-[70px]">
+                            <p class="text-xl font-bold">19</p>
+                            <p class="text-sm uppercase">Jul</p>
+                        </div>
+                        <div>
+                            <h3 class="font-heading text-xl font-bold mb-1">Marriage Seminar</h3>
+                            <p class="text-gray-600 dark:text-gray-400 text-sm">9:00 AM - 1:00 PM</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-700 dark:text-gray-300 mb-4">Strengthen your marriage with biblical principles and practical tools for couples.</p>
+                    <div class="flex justify-between items-center">
+                        <span class="text-sm px-3 py-1 bg-primary-light/10 dark:bg-accent-dark/10 text-primary-light dark:text-accent-dark rounded-full">Family</span>
+                        <a href="#" class="text-primary-light dark:text-accent-dark font-medium text-sm hover:underline">Register →</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center px-6 py-3 border-2 border-primary-light dark:border-accent-dark text-primary-light dark:text-accent-dark rounded-full font-medium hover:bg-primary-light hover:text-white dark:hover:bg-accent-dark dark:hover:text-white transition-all duration-300">
+                    <i class="far fa-calendar-alt mr-2"></i> View All Events
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Media Section -->
+    <section id="media" class="py-20 bg-gray-50 dark:bg-gray-900">
+    <div class="container mx-auto px-6">
+        <div class="text-center mb-16">
+            <span class="text-primary-light dark:text-accent-dark font-medium uppercase tracking-widest">Gallery</span>
+            <h2 class="font-heading text-4xl md:text-5xl font-bold mt-4 text-gray-800 dark:text-white">Church Media</h2>
+            <div class="w-24 h-1 bg-primary-light dark:bg-accent-dark mx-auto mt-6"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto">
+            <div class="relative">
+                <div class="poster-carousel flex overflow-x-auto snap-x snap-mandatory gap-8 pb-8 scroll-smooth" style="scroll-snap-type: x mandatory;">
+                    <!-- Poster 1 -->
+                    <div class="flex-shrink-0 w-4/5 md:w-1/2 lg:w-1/3 snap-center">
+                        <div class="poster-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl h-full">
+                            <img src="flyer1.jpg" 
+                                 alt="Church Conference" 
+                                 class="w-full aspect-[4/3] object-contain bg-white dark:bg-gray-900">
+                            <div class="p-6">
+                                <h3 class="font-heading text-xl font-bold mb-2">Meeting Saturdays</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">Preaching the gospel of the kingdom of God</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm px-3 py-1 bg-primary-light/10 dark:bg-accent-dark/10 text-primary-light dark:text-accent-dark rounded-full">Service</span>
+                                    <a href="#" class="text-primary-light dark:text-accent-dark text-sm hover:underline">View Photos →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Poster 2 -->
+                    <div class="flex-shrink-0 w-4/5 md:w-1/2 lg:w-1/3 snap-center">
+                        <div class="poster-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl h-full">
+                            <img src="flyer2.jpg" 
+                                 alt="Baptism Service" 
+                                 class="w-full aspect-[4/3] object-contain bg-white dark:bg-gray-900">
+                            <div class="p-6">
+                                <h3 class="font-heading text-xl font-bold mb-2">Upcomming Conference</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">Upcomming Conference</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm px-3 py-1 bg-primary-light/10 dark:bg-accent-dark/10 text-primary-light dark:text-accent-dark rounded-full">Upcomming Conference</span>
+                                    <a href="#" class="text-primary-light dark:text-accent-dark text-sm hover:underline">View Photos →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Poster 3 -->
+                    <div class="flex-shrink-0 w-4/5 md:w-1/2 lg:w-1/3 snap-center">
+                        <div class="poster-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl h-full">
+                            <img src="flyer3.jpg"
+                                 alt="Community Outreach" 
+                                 class="w-full aspect-[4/3] object-contain bg-white dark:bg-gray-900">
+                            <div class="p-6">
+                                <h3 class="font-heading text-xl font-bold mb-2">Upcomming Conference</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">Upcomming Conference</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm px-3 py-1 bg-primary-light/10 dark:bg-accent-dark/10 text-primary-light dark:text-accent-dark rounded-full">Mission</span>
+                                    <a href="#" class="text-primary-light dark:text-accent-dark text-sm hover:underline">View Photos →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Poster 4 -->
+                    <div class="flex-shrink-0 w-4/5 md:w-1/2 lg:w-1/3 snap-center">
+                        <div class="poster-card bg-white dark:bg-gray-800 rounded-2xl overflow-hidden shadow-xl h-full">
+                            <img src="flyer4.jpg"
+                                 alt="Youth Camp" 
+                                 class="w-full aspect-[4/3] object-contain bg-white dark:bg-gray-900">
+                            <div class="p-6">
+                                <h3 class="font-heading text-xl font-bold mb-2">Upcomming Conference</h3>
+                                <p class="text-gray-600 dark:text-gray-400 mb-4">Upcomming Conference</p>
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm px-3 py-1 bg-primary-light/10 dark:bg-accent-dark/10 text-primary-light dark:text-accent-dark rounded-full">Youth</span>
+                                    <a href="#" class="text-primary-light dark:text-accent-dark text-sm hover:underline">View Photos →</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="flex justify-center mt-8 space-x-4">
+                    <button onclick="scrollCarousel(-1)" class="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-md flex items-center justify-center hover:bg-primary-light hover:text-white dark:hover:bg-accent-dark transition-all duration-300">
+                        <i class="fas fa-chevron-left"></i>
+                    </button>
+                    <button onclick="scrollCarousel(1)" class="w-12 h-12 rounded-full bg-white dark:bg-gray-800 shadow-md flex items-center justify-center hover:bg-primary-light hover:text-white dark:hover:bg-accent-dark transition-all duration-300">
+                        <i class="fas fa-chevron-right"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-white dark:bg-gray-800">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-primary-light dark:text-accent-dark font-medium uppercase tracking-widest">Get In Touch</span>
+                <h2 class="font-heading text-4xl md:text-5xl font-bold mt-4 text-gray-800 dark:text-white">Contact Us</h2>
+                <div class="w-24 h-1 bg-primary-light dark:bg-accent-dark mx-auto mt-6"></div>
+            </div>
+            
+            <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12">
+                <div>
+                    <h3 class="font-heading text-3xl font-bold mb-8 text-primary-light dark:text-accent-dark">We'd Love to Hear From You</h3>
+                    
+                    <div class="space-y-8">
+                        <div class="flex items-start bg-secondary-light dark:bg-gray-700 p-6 rounded-2xl">
+                            <div class="bg-primary-light dark:bg-accent-dark text-white p-4 rounded-xl mr-6">
+                                <i class="fas fa-map-marker-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-xl mb-2">Our Location</h4>
+                                <p class="text-gray-600 dark:text-gray-400">Washington</p>
+                                <a href="#" class="inline-block mt-3 text-primary-light dark:text-accent-dark font-medium hover:underline">Get Directions</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start bg-secondary-light dark:bg-gray-700 p-6 rounded-2xl">
+                            <div class="bg-primary-light dark:bg-accent-dark text-white p-4 rounded-xl mr-6">
+                                <i class="fas fa-phone-alt text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-xl mb-2">Phone Numbers</h4>
+                                <p class="text-gray-600 dark:text-gray-400">+1 00 000 000 (Office)</p>
+                                <p class="text-gray-600 dark:text-gray-400">+1 00 000 000 (Pastor)</p>
+                                <a href="tel:+260971234567" class="inline-block mt-3 text-primary-light dark:text-accent-dark font-medium hover:underline">Call Now</a>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start bg-secondary-light dark:bg-gray-700 p-6 rounded-2xl">
+                            <div class="bg-primary-light dark:bg-accent-dark text-white p-4 rounded-xl mr-6">
+                                <i class="fas fa-envelope text-xl"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-medium text-xl mb-2">Email Addresses</h4>
+                                <p class="text-gray-600 dark:text-gray-400">info@rhemarevivals.org</p>
+                                <p class="text-gray-600 dark:text-gray-400">rhemarevivals@gmail.com</p>
+                                <a href="mailto:info@righttotheworld.org" class="inline-block mt-3 text-primary-light dark:text-accent-dark font-medium hover:underline">Send Email</a>
+                            </div>
+                        </div>
+                        
+                        <div class="mt-8">
+                            <h4 class="font-medium text-xl mb-4">Follow Us</h4>
+                            <div class="flex space-x-4">
+                                <a href="#" class="w-12 h-12 rounded-full bg-secondary-light dark:bg-gray-700 flex items-center justify-center hover:bg-primary-light hover:text-white dark:hover:bg-accent-dark transition-all duration-300 shadow-md">
+                                    <i class="fab fa-facebook-f text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-secondary-light dark:bg-gray-700 flex items-center justify-center hover:bg-primary-light hover:text-white dark:hover:bg-accent-dark transition-all duration-300 shadow-md">
+                                    <i class="fab fa-twitter text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-secondary-light dark:bg-gray-700 flex items-center justify-center hover:bg-primary-light hover:text-white dark:hover:bg-accent-dark transition-all duration-300 shadow-md">
+                                    <i class="fab fa-instagram text-xl"></i>
+                                </a>
+                                <a href="#" class="w-12 h-12 rounded-full bg-secondary-light dark:bg-gray-700 flex items-center justify-center hover:bg-primary-light hover:text-white dark:hover:bg-accent-dark transition-all duration-300 shadow-md">
+                                    <i class="fab fa-youtube text-xl"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-heading text-3xl font-bold mb-8 text-primary-light dark:text-accent-dark">Send Us a Message</h3>
+                    
+                    <form class="space-y-6">
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="name" class="block mb-2 font-medium">Your Name</label>
+                                <input type="text" id="name" class="w-full px-5 py-3 border border-gray-300 rounded-xl form-input focus:outline-none focus:border-primary-light dark:bg-gray-700 dark:border-gray-600 dark:focus:border-accent-dark" required>
+                            </div>
+                            
+                            <div>
+                                <label for="email" class="block mb-2 font-medium">Your Email</label>
+                                <input type="email" id="email" class="w-full px-5 py-3 border border-gray-300 rounded-xl form-input focus:outline-none focus:border-primary-light dark:bg-gray-700 dark:border-gray-600 dark:focus:border-accent-dark" required>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <label for="subject" class="block mb-2 font-medium">Subject</label>
+                            <input type="text" id="subject" class="w-full px-5 py-3 border border-gray-300 rounded-xl form-input focus:outline-none focus:border-primary-light dark:bg-gray-700 dark:border-gray-600 dark:focus:border-accent-dark" required>
+                        </div>
+                        
+                        <div>
+                            <label for="message" class="block mb-2 font-medium">Your Message</label>
+                            <textarea id="message" rows="6" class="w-full px-5 py-3 border border-gray-300 rounded-xl form-input focus:outline-none focus:border-primary-light dark:bg-gray-700 dark:border-gray-600 dark:focus:border-accent-dark" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="w-full px-8 py-4 bg-primary-light hover:bg-primary-dark text-white rounded-full font-medium text-lg transition-all duration-300 transform hover:scale-[1.02] shadow-lg dark:bg-accent-dark dark:hover:bg-accent-light">
+                            Send Message
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="mt-20 rounded-2xl overflow-hidden shadow-2xl">
+    <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d4652.855088424402!2d-120.88252199999998!3d47.272993!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x5485e5ffe7c3b0f9%3A0x944278686c5ff3ba!2sWashington!5e1!3m2!1sen!2sus!4v1747079898782!5m2!1sen!2sus&layer=satellite" 
+            width="100%" 
+            height="450" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+</div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white pt-16 pb-8">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-4 gap-12">
+                <div>
+                    <div class="flex items-center space-x-3 mb-6">
+                        <div class="w-10 h-10 rounded-full bg-primary-light dark:bg-accent-dark flex items-center justify-center">
+                            <i class="fas fa-cross text-white text-xl"></i>
+                        </div>
+                        <span class="font-heading text-2xl font-bold">Rhema Revival</span>
+                    </div>
+                    <p class="mb-6">A welcoming community where faith comes alive through worship, fellowship, and service to others.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://web.facebook.com/profile.php?id=61574943883119" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-light dark:hover:bg-accent-dark flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-light dark:hover:bg-accent-dark flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-light dark:hover:bg-accent-dark flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="w-10 h-10 rounded-full bg-gray-700 hover:bg-primary-light dark:hover:bg-accent-dark flex items-center justify-center transition-colors duration-300">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="font-heading text-xl font-bold mb-6">Quick Links</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#home" class="hover:text-accent-dark transition-colors duration-300">Home</a></li>
+                        <li><a href="#pastor" class="hover:text-accent-dark transition-colors duration-300">Our Pastor</a></li>
+                        <li><a href="#services" class="hover:text-accent-dark transition-colors duration-300">Service Times</a></li>
+                        <li><a href="#events" class="hover:text-accent-dark transition-colors duration-300">Upcoming Events</a></li>
+                        <li><a href="#media" class="hover:text-accent-dark transition-colors duration-300">Media Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-accent-dark transition-colors duration-300">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-heading text-xl font-bold mb-6">Ministries</h3>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-accent-dark transition-colors duration-300">Children's Ministry</a></li>
+                        <li><a href="#" class="hover:text-accent-dark transition-colors duration-300">Youth Ministry</a></li>
+                        <li><a href="#" class="hover:text-accent-dark transition-colors duration-300">Women's Ministry</a></li>
+                        <li><a href="#" class="hover:text-accent-dark transition-colors duration-300">Men's Ministry</a></li>
+                        <li><a href="#" class="hover:text-accent-dark transition-colors duration-300">Music Ministry</a></li>
+                        <li><a href="#" class="hover:text-accent-dark transition-colors duration-300">Outreach Ministry</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="font-heading text-xl font-bold mb-6">Newsletter</h3>
+                    <p class="mb-6">Subscribe to our newsletter to stay updated with our latest news and events.</p>
+                    <form class="flex">
+                        <input type="email" placeholder="Your email" class="px-4 py-3 rounded-l-lg focus:outline-none text-gray-800 w-full">
+                        <button type="submit" class="px-4 py-3 bg-primary-light hover:bg-primary-dark rounded-r-lg transition-colors duration-300 dark:bg-accent-dark dark:hover:bg-accent-light">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p>&copy; 2025 Rhema Revival Church. All Rights Reserved.</p>
+                <div class="flex space-x-6 mt-4 md:mt-0">
+                    <a href="#" class="hover:text-accent-dark transition-colors duration-300">Privacy Policy</a>
+                    <a href="#" class="hover:text-accent-dark transition-colors duration-300">Terms of Use</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Dark/Light Mode Toggle
+        const toggle = document.getElementById('toggle');
+        const html = document.querySelector('html');
+        
+        // Check for saved user preference, if any, on load of the website
+        if (localStorage.getItem('color-theme') === 'dark' || (!('color-theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            html.classList.add('dark');
+            toggle.checked = true;
+        } else {
+            html.classList.remove('dark');
+            toggle.checked = false;
+        }
+        
+        toggle.addEventListener('change', function() {
+            if (this.checked) {
+                html.classList.add('dark');
+                localStorage.setItem('color-theme', 'dark');
+            } else {
+                html.classList.remove('dark');
+                localStorage.setItem('color-theme', 'light');
+            }
+        });
+        
+        // Mobile Menu Toggle
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        mobileMenuButton.addEventListener('click', function() {
+            mobileMenu.classList.toggle('hidden');
+            this.querySelector('i').classList.toggle('fa-bars');
+            this.querySelector('i').classList.toggle('fa-times');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                mobileMenuButton.querySelector('i').classList.add('fa-bars');
+                mobileMenuButton.querySelector('i').classList.remove('fa-times');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Poster Carousel Navigation
+        function scrollCarousel(direction) {
+            const carousel = document.querySelector('.poster-carousel');
+            const scrollAmount = carousel.clientWidth * 0.8; // Adjust scroll amount as needed
+            
+            if (direction === -1) {
+                carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+            } else {
+                carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+            }
+        }
+        
+        // Form submission (prevent default for demo)
+        document.querySelector('form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We will get back to you soon.');
+            this.reset();
+        });
+        
+        // Add animation classes when elements come into view
+        const observerOptions = {
+            threshold: 0.1
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+</body>
+</html>
